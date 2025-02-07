@@ -9,7 +9,7 @@
 
   tasks:
     - name: "web install"
-      include_tasks: "{{ dst_name }}.yaml"
+      include_tasks: "./workspace/test/0207/{{ dst_name }}.yaml"
 
     - name: PRINT IP ADDRESS
       debug:
