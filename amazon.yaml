@@ -1,0 +1,8 @@
+    - name: webserver installation in amazon
+      action: "{{ ansible_pkg_mgr }} name=httpd state=latest"
+
+    - name: httpd start in amazon
+      service: name=httpd state=started enabled=true
+
+    - name: making index.html in amazon
+      get_url: url=https://www.daum.net dest=/var/www/html/index.html 

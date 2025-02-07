@@ -1,0 +1,8 @@
+    - name: webserver installation in Ubuntu
+      action: "{{ ansible_pkg_mgr }} name=nginx state=latest"
+
+    - name: nginx start in Ubuntu
+      service: name=nginx state=started enabled=true
+
+    - name: making index.html in Ubuntu
+      get_url: url=https://www.daum.net dest=/var/www/html/index.html

@@ -1,0 +1,19 @@
+---
+- name: webserver installation case by case
+  hosts: all
+  become: yes
+
+  vars:
+    dst_name: "{{ 'amazon' if ansible_distribution == 'Amazon'
+                  else 'ubuntu' }}"
+
+  tasks:
+    - name: "web install"
+      include_tasks: "{{ dst_name }}.yaml"
+
+    - name: PRINT IP ADDRESS
+      debug:
+        msg:
+          - "HostName : {{ ansible_hostname }}"
+          - "NodeName : {{ ansible_nodename }}"
+          - "eth0 : {{ ansible_eth0.ipv4.address }}"
